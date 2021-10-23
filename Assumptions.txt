@@ -1,0 +1,2 @@
+* Inputs ticket size, player count etc are in range of integers only.
+*
