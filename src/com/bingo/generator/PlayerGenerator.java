@@ -3,16 +3,17 @@ package com.bingo.generator;
 import com.bingo.model.Game;
 import com.bingo.model.Player;
 
-public class PlayerGenerator implements IGenerator {
+import java.util.ArrayList;
+import java.util.List;
 
+public class PlayerGenerator  {
 
-    @Override
-    public boolean generateAndPopulate(Game game) {
-        int playerCount = game.getPlayersCount();
-        for(int i=1; i<= playerCount; i++) {
+    public List<Player> generate(Game game) {
+        List<Player> players = new ArrayList<>(game.getPlayersCount());
+        for(int i=1; i<= game.getPlayersCount(); i++) {
             Player player = new Player("Player"+i);
-            game.addPlayer(player);
+            players.add(player);
         }
-        return true;
+        return players;
     }
 }

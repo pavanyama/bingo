@@ -8,6 +8,7 @@ import java.util.List;
 
 /*
  * This idea has taken from https://stackoverflow.com/questions/16000196/java-generating-non-repeating-random-numbers
+ * Disadvantages are -  Memory and ahead of generation.
  */
 public class RandomNumberGenerator {
 

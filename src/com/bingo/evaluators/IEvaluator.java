@@ -1,5 +1,8 @@
 package com.bingo.evaluators;
 
+import com.bingo.model.Game;
+
 public interface IEvaluator {
-    public boolean evaluate();
+    boolean evaluate(Game game);
+    boolean isEvaluationIdentifiedWinner();
 }
