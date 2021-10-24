@@ -1,10 +1,18 @@
 package com.bingo.generator;
 
-import com.bingo.generator.IGenerator;
+import com.bingo.model.Game;
+import com.bingo.model.Player;
 
-public class PlayerGenerator /*implements IGenerator*/ {
+public class PlayerGenerator implements IGenerator {
 
-    public boolean generate(int count) {
-        return false;
+
+    @Override
+    public boolean generateAndPopulate(Game game) {
+        int playerCount = game.getPlayersCount();
+        for(int i=1; i<= playerCount; i++) {
+            Player player = new Player("Player"+i);
+            game.addPlayer(player);
+        }
+        return true;
     }
 }

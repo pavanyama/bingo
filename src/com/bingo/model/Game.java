@@ -1,38 +1,26 @@
 package com.bingo.model;
 
-import com.bingo.generator.IGenerator;
-import com.bingo.generator.TickerGenerator;
-import com.bingo.util.Validator;
-
 import java.util.List;
 
-/*
- * This represents the whole game. This class is a singleton class.
- */
 public class Game {
 
-    private static Game game;
-    private int numberRangeMax;
+
+    private int upperBound;
     private int playersCount;
     private int ticketRowCount;
     private int ticketColCount;
     private int numbersPerRow;
-    private String ticketSize;
 
     private List<Winner> winners;
     private List<Ticket> tickets;
     private List<Player> players;
 
-    private Game() { }
+    public Game(int upperBound, int playersCount, String ticketSize, int numbersPerRow) {
 
-    public Game init(int numberRangeMax, int playersCount, String ticketSize, int numbersPerRow) {
-        Validator.validateInputs(numberRangeMax, playersCount, ticketSize, numbersPerRow);
-
-        this.numberRangeMax = numberRangeMax;
+        this.upperBound = upperBound;
         this.playersCount = playersCount;
         this.numbersPerRow = numbersPerRow;
         populateRowsAndColumnsCount(ticketSize);
-        return game;
     }
 
     private void populateRowsAndColumnsCount(String ticketSize) {
@@ -41,23 +29,71 @@ public class Game {
         this.ticketColCount = Integer.parseInt(sizes[1]);
     }
 
-    public static Game getInstance() {
-        return game;
+    public int getUpperBound() {
+        return upperBound;
     }
 
-    public void start() {
-        // I wouldn't use builder pattern here as only 4 params,
-        // all these values are available and these are mandatory for generator.
-        TickerGenerator generator = new TickerGenerator(numberRangeMax, ticketRowCount, ticketColCount,
-                playersCount, numbersPerRow);
-        generator.generate(playersCount);
+    public void setUpperBound(int upperBound) {
+        this.upperBound = upperBound;
     }
 
-    public int generateRandomNumber() {
-        return 1;
+    public int getPlayersCount() {
+        return playersCount;
     }
 
-    public boolean play() {
-        return true;
+    public void setPlayersCount(int playersCount) {
+        this.playersCount = playersCount;
+    }
+
+    public int getTicketRowCount() {
+        return ticketRowCount;
+    }
+
+    public void setTicketRowCount(int ticketRowCount) {
+        this.ticketRowCount = ticketRowCount;
+    }
+
+    public int getTicketColCount() {
+        return ticketColCount;
+    }
+
+    public void setTicketColCount(int ticketColCount) {
+        this.ticketColCount = ticketColCount;
+    }
+
+    public int getNumbersPerRow() {
+        return numbersPerRow;
+    }
+
+    public void setNumbersPerRow(int numbersPerRow) {
+        this.numbersPerRow = numbersPerRow;
+    }
+
+    public List<Winner> getWinners() {
+        return winners;
+    }
+
+    public void setWinners(List<Winner> winners) {
+        this.winners = winners;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public void addPlayer(Player player) {
+        this.players.add(player);
     }
 }

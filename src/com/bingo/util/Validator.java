@@ -6,7 +6,7 @@ public class Validator {
         return 1;
     }
 
-    public static void validateInputs(int numberRangeMax, int playersCount, String ticketSize, int numbersPerRow) {
+    public static void validateGame(int numberRangeMax, int playersCount, String ticketSize, int numbersPerRow) {
         validateRange(numberRangeMax);
 //        validatePlayerCount();
     }

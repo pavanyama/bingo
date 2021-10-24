@@ -1,6 +1,6 @@
 package com.bingo;
 
-import com.bingo.model.Game;
+import com.bingo.service.GameService;
 
 import java.util.Scanner;
 
@@ -19,18 +19,19 @@ public class BingoStarterMain {
         System.out.println("Enter numbers per row:");
         int numbersPerRow = scanner.nextInt();
 
-        Game game = Game.getInstance();
-        game.init(numberRangeMax, playersCount, ticketSize, numbersPerRow);
-        game.start();
+        GameService gameService = new GameService();
+
+        gameService.initialize(numberRangeMax, playersCount, ticketSize, numbersPerRow);
 
         System.out.println("***Ticket Created Successfully ****");
         System.out.println("Press 'N' to generate next number.");
+
         boolean isGameOver = false;
         while(!isGameOver) {
             String letter = scanner.nextLine();
             if(letter.equalsIgnoreCase("N")) {
-                System.out.println("Next number is: " + game.generateRandomNumber());
-                isGameOver = game.play();
+                System.out.println("Next number is: " + gameService.generateRandomNumber());
+                isGameOver = gameService.play();
             }
         }
         System.out.println("***** Game Over *****");
