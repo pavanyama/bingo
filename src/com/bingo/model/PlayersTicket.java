@@ -1,5 +1,8 @@
 package com.bingo.model;
 
+/*
+ * This class represents a combination of player and ticket in one game.
+ */
 public class PlayersTicket {
 
     private Ticket ticket;
@@ -14,15 +17,13 @@ public class PlayersTicket {
         return ticket;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-    }
-
     public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    @Override
+    public String toString() {
+        return "Player: " + player.toString() +
+                "\nTicket=" + ticket.toString();
     }
 }

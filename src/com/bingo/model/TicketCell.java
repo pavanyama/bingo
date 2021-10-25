@@ -21,15 +21,15 @@ public class TicketCell {
         return this.isCellMarked;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
     public boolean isCellMarked() {
         return isCellMarked;
     }
-
-    public void setCellMarked(boolean cellMarked) {
-        isCellMarked = cellMarked;
+    /* Adding a quote if a cell is marked*/
+    @Override
+    public String toString() {
+        if(isCellMarked)
+            return value +"' " ;
+        else
+            return value + " ";
     }
 }

@@ -8,6 +8,7 @@ import com.bingo.model.Game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EvaluationService {
 
@@ -21,7 +22,6 @@ public class EvaluationService {
         //Any new evaluators comes add here.
     }
 
-
     public boolean evaluate(Game game) {
         evaluators.forEach(evaluator -> {
             if(!evaluator.isEvaluationIdentifiedWinner()){
@@ -30,5 +30,12 @@ public class EvaluationService {
         });
         return true;
     }
-
+    /* This will loop through all the evaluators and returns false
+     even if one evaluator has not identified winner.*/
+    public boolean isEveryEvaluationIdentifiedWinner() {
+        return evaluators.stream()
+                .filter(evaluator -> !evaluator.isEvaluationIdentifiedWinner())
+                .collect(Collectors.toList())
+                .size() == 0;
+    }
 }

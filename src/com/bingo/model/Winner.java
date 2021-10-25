@@ -12,5 +12,10 @@ public class Winner extends PlayersTicket {
                   Ticket ticket,
                   IEvaluator evaluator) {
         super(player, ticket);
+        this.evaluator = evaluator;
+    }
+
+    public IEvaluator getEvaluator() {
+        return evaluator;
     }
 }

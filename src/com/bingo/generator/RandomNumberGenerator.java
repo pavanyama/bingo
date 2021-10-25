@@ -2,9 +2,9 @@ package com.bingo.generator;
 
 import com.bingo.model.Game;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /*
  * This idea has taken from https://stackoverflow.com/questions/16000196/java-generating-non-repeating-random-numbers
@@ -12,17 +12,17 @@ import java.util.List;
  */
 public class RandomNumberGenerator {
 
-    List<Integer> eventList = new ArrayList<>();
-    int eventIndex = 0;
-
-    public RandomNumberGenerator(Game game){
-        for(int i=1; i<=game.getUpperBound(); i++ ) {
-            eventList.add(i);
+    public static List<Integer> generate(int count, int upperBound) {
+        if(upperBound < count) {
+            throw new IllegalArgumentException("Count should be less than upperbound");
+        } else {
+            Random random = new Random();
+            Set<Integer> randomNumbers = new LinkedHashSet<>();
+            while(randomNumbers.size() != count) {
+                Integer number = random.nextInt(upperBound);
+                randomNumbers.add(number+1);
+            }
+            return randomNumbers.stream().collect(Collectors.toList());
         }
-        Collections.shuffle(eventList);
-    }
-
-    public Integer generate() {
-        return eventList.get(eventIndex++);
     }
 }
