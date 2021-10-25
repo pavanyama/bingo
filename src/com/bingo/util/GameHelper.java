@@ -31,9 +31,9 @@ public final class GameHelper {
         System.out.println("         Summary:");
         game.getWinners().forEach(winner -> {
             Player player = winner.getPlayer();
-            String evaluatorsDescr = summaryMap.get(player.getName());
-            if(evaluatorsDescr!=null && !evaluatorsDescr.isEmpty()) {
-                summaryMap.put(player.getName(), evaluatorsDescr
+            String evaluatorsDescription = summaryMap.get(player.getName());
+            if(evaluatorsDescription!=null && !evaluatorsDescription.isEmpty()) {
+                summaryMap.put(player.getName(), evaluatorsDescription
                         + Constants.AND + winner.getEvaluator().getName());
             } else {
                 summaryMap.put(player.getName(), winner.getEvaluator().getName());

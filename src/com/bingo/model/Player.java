@@ -5,7 +5,7 @@ package com.bingo.model;
  */
 public class Player {
 
-    String name;
+    private final String name;
 
     public Player(String name) {
         this.name = name;

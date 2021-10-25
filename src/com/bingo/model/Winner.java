@@ -6,7 +6,7 @@ import com.bingo.evaluators.IEvaluator;
  * This represents a winner on a particular winning combination.
  */
 public class Winner extends PlayersTicket {
-    IEvaluator evaluator;
+    private final IEvaluator evaluator;
 
     public Winner(Player player,
                   Ticket ticket,

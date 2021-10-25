@@ -10,12 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class EarlyCountEvaluator extends AbstractEvaluator {
 
     @Override
-    public boolean evaluate(Game game) {
-
-        game.getPlayersTickets().forEach(playersTicket -> {
-            evaluateTicket(playersTicket, game);
-        });
-        return true;
+    public void evaluate(Game game) {
+        game.getPlayersTickets().forEach(playersTicket -> evaluateTicket(playersTicket, game));
     }
 
     @Override
@@ -37,6 +33,7 @@ public class EarlyCountEvaluator extends AbstractEvaluator {
                                 playersTicket.getTicket(),
                                 this);
                         game.addWinner(winner);
+                        //noinspection UnnecessaryReturnStatement
                         return;
                     }
                 }

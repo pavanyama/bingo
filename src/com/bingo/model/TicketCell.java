@@ -5,8 +5,8 @@ package com.bingo.model;
 * */
 
 public class TicketCell {
-    int value;
-    boolean isCellMarked = false;
+    private final int value;
+    private boolean isCellMarked = false;
 
     public TicketCell(int value) {
         this.value = value;
@@ -16,14 +16,14 @@ public class TicketCell {
         return this.value;
     }
 
-    public boolean markCell(){
+    public void markCell(){
         this.isCellMarked = true;
-        return this.isCellMarked;
     }
 
     public boolean isCellMarked() {
         return isCellMarked;
     }
+
     /* Adding a quote if a cell is marked*/
     @Override
     public String toString() {

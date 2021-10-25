@@ -16,9 +16,9 @@ public class Game {
     private final int ticketColCount;
     private final int numbersPerRow;
 
-    private List<Winner> winners = new ArrayList<>();
-    private List<PlayersTicket> playersTickets = new ArrayList<>();
-    private List<Integer> callerNumbers = new ArrayList<>();
+    private final List<Winner> winners = new ArrayList<>();
+    private final List<PlayersTicket> playersTickets = new ArrayList<>();
+    private final List<Integer> callerNumbers = new ArrayList<>();
 
     public Game(int upperBound, int playersCount, String ticketSize, int numbersPerRow) {
 
@@ -37,6 +37,19 @@ public class Game {
 
     public Integer getMostRecentCallerNumber() {
         return this.callerNumbers.get(this.callerNumbers.size() - 1);
+    }
+
+    public void assignTicketsToPlayers(List<Ticket> tickets, List<Player> players) {
+        if(tickets.size() < players.size()) {
+            throw new IllegalStateException("Not enough tickets generated!");
+        } else {
+            for(int i=0; i<players.size(); i++) {
+                Player player = players.get(i);
+                Ticket ticket = tickets.get(i);
+                PlayersTicket playersTicket = new PlayersTicket(player, ticket);
+                addPlayersTicket(playersTicket);
+            }
+        }
     }
 
     public void addPlayersTicket(PlayersTicket playersTicket) {

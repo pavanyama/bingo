@@ -2,10 +2,11 @@ package com.bingo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TicketRow {
-    List<TicketCell> ticketCells = new ArrayList<>();
+    private final List<TicketCell> ticketCells = new ArrayList<>();
 
     public void addTicketCell(TicketCell ticketCell){
         this.ticketCells.add(ticketCell);
@@ -18,7 +19,7 @@ public class TicketRow {
     public boolean areAllCellsMarked() {
         AtomicInteger count = new AtomicInteger();
         ticketCells.forEach(ticketCell -> {
-            if(ticketCell.isCellMarked() || ticketCell.value==0){
+            if(ticketCell.isCellMarked() || ticketCell.getValue() ==0){
                 count.incrementAndGet();
             }
         });
@@ -27,7 +28,7 @@ public class TicketRow {
 
     public void markCellsWithMatchingNumber(Integer number){
         ticketCells.forEach(ticketCell -> {
-            if(ticketCell.getValue() == number){
+            if(Objects.equals(ticketCell.getValue(), number)){
                 ticketCell.markCell();
             }
         });
@@ -39,6 +40,4 @@ public class TicketRow {
         ticketCells.forEach(ticketCell -> builder.append(ticketCell.toString()));
         return builder.toString()+"\n";
     }
-
-
 }

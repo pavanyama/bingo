@@ -5,8 +5,8 @@ package com.bingo.model;
  */
 public class PlayersTicket {
 
-    private Ticket ticket;
-    private Player player;
+    private final Ticket ticket;
+    private final Player player;
 
     public PlayersTicket(Player player, Ticket ticket) {
         this.player = player;

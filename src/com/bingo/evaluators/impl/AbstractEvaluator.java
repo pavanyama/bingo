@@ -8,7 +8,7 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     @Override
     public boolean isEvaluationIdentifiedWinner() {
-        return this.isEvaluationIdentifiedWinner;
+        return !this.isEvaluationIdentifiedWinner;
     }
 
     public void setEvaluationIdentifiedWinner(boolean evaluationIdentifiedWinner) {

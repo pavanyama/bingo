@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Ticket {
 
-    List<TicketRow> ticketRows = new ArrayList<>();
+    private final List<TicketRow> ticketRows = new ArrayList<>();
 
     public void addRow(TicketRow ticketRow) {
         this.ticketRows.add(ticketRow);

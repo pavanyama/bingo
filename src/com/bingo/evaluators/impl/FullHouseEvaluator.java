@@ -5,16 +5,11 @@ import com.bingo.model.PlayersTicket;
 import com.bingo.model.Winner;
 import com.bingo.util.Constants;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class FullHouseEvaluator extends AbstractEvaluator {
 
     @Override
-    public boolean evaluate(Game game) {
-        game.getPlayersTickets().forEach(playersTicket -> {
-            evaluateTicket(playersTicket, game);
-        });
-        return false;
+    public void evaluate(Game game) {
+        game.getPlayersTickets().forEach(playersTicket -> evaluateTicket(playersTicket, game));
     }
 
     private void evaluateTicket(PlayersTicket playersTicket, Game game) {
@@ -26,6 +21,7 @@ public class FullHouseEvaluator extends AbstractEvaluator {
                     playersTicket.getTicket(),
                     this);
             game.addWinner(winner);
+            //noinspection UnnecessaryReturnStatement
             return;
         }
     }
