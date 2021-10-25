@@ -1,4 +1,4 @@
-# 
+Housie/Bingo/Thambola game
 
 Assumptions:
 * Inputs ticket size, player count etc are in range of integers only.
