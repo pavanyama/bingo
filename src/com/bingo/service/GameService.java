@@ -66,6 +66,8 @@ public final class GameService {
 
             } else if(letter.equalsIgnoreCase("Q")) {
                 System.exit(1);
+            } else if(letter.equalsIgnoreCase("D")) {
+                System.out.println(game);
             }
         }
         System.out.println("***** Game Over *****");
